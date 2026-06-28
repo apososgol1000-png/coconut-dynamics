@@ -1,0 +1,13 @@
+baseURL = "https://coconut-dynamics.org/"
+languageCode = "en-us"
+title = "Coconut Dynamics"
+
+[params]
+  description = "Linux that feels alive — a glassmorphic, refreshing OS experience."
+  author = "Coconut Dynamics Team"
+
+# Permite HTML crudo dentro del Markdown
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

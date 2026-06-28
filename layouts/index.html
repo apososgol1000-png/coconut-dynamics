@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Site.Title }} — {{ .Params.hero_title }}</title>
+  <meta name="description" content="{{ .Params.description }}">
+
+  <!-- Google Fonts: Nunito (estilo redondeado, fresco) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- ═══ Tailwind CSS (CDN — ver nota abajo para producción) ═══ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Nunito', 'Segoe UI', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            coconut: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4',
+              300: '#5eead4', 400: '#2dd4bf', 500: '#14b8a6',
+              600: '#0d9488', 700: '#0f766e',
+            },
+            aqua: {
+              50: '#f0f9ff',  100: '#e0f2fe', 200: '#bae6fd',
+              300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9',
+              600: '#0284c7', 700: '#0369a1', 800: '#075985',
+              900: '#0c4a6e',
+            },
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- CSS personalizado (glassmorphism, esferas, animaciones) -->
+  {{ $css := resources.Get "css/custom.css" | minify }}
+  {{ with $css }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{ end }}
+</head>
+
+<body class="font-sans text-aqua-900 overflow-x-hidden">
+
+  <!-- ═══════ Esferas decorativas (background) ═══════ -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="sphere anim-float" style="width:200px;height:200px;top:10%;left:5%"></div>
+    <div class="sphere sphere-green anim-float-d" style="width:150px;height:150px;top:60%;left:80%"></div>
+    <div class="sphere anim-float-s" style="width:100px;height:100px;top:30%;left:90%"></div>
+    <div class="sphere sphere-green anim-float" style="width:120px;height:120px;top:70%;left:10%"></div>
+    <div class="sphere anim-float-d" style="width:80px;height:80px;top:15%;left:60%"></div>
+    <div class="sphere sphere-green anim-float-s" style="width:60px;height:60px;top:85%;left:50%"></div>
+  </div>
+
+  <!-- ═══════ Navbar ═══════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 text-xl font-extrabold text-aqua-800">
+        <span class="text-3xl">🥥</span>
+        <span>Coconut Dynamics</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 font-semibold text-aqua-700">
+        <a href="#features" class="hover:text-aqua-900 transition">Features</a>
+        <a href="#about" class="hover:text-aqua-900 transition">About</a>
+        <a href="#download" class="hover:text-aqua-900 transition">Download</a>
+      </div>
+      <a href="#download" class="btn-glossy text-white font-bold px-5 py-2.5 rounded-full text-sm hidden sm:inline-block">
+        Get Started
+      </a>
+      <button class="md:hidden text-2xl text-aqua-800" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 font-semibold text-aqua-700">
+      <a href="#features" class="block py-2 hover:text-aqua-900 transition">Features</a>
+      <a href="#about" class="block py-2 hover:text-aqua-900 transition">About</a>
+      <a href="#download" class="block py-2 hover:text-aqua-900 transition">Download</a>
+    </div>
+  </nav>
+
+  <!-- ═══════ Hero ═══════ -->
+  <section class="relative z-10 pt-36 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-block glass rounded-full px-4 py-1.5 text-sm font-semibold text-aqua-700 mb-6">
+        ✨ Version {{ .Params.iso_version }} is here
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black text-aqua-900 text-glow leading-tight mb-6">
+        {{ .Params.hero_title | safeHTML }}
+      </h1>
+      <p class="text-xl md:text-2xl text-aqua-700 font-semibold mb-10 max-w-2xl mx-auto">
+        {{ .Params.hero_subtitle }}
+      </p>
+      <a href="#download" class="btn-glossy inline-flex items-center gap-3 text-white font-bold text-lg px-8 py-4 rounded-full">
+        <span>⬇</span><span>Download ISO</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════ Features ═══════ -->
+  <section id="features" class="relative z-10 py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-black text-center text-aqua-900 mb-4">
+        Everything you need,<br class="md:hidden"> nothing you don't
+      </h2>
+      <p class="text-center text-aqua-600 font-semibold mb-12">Crafted with obsessive attention to detail</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {{ range .Params.features }}
+        <div class="glass-card rounded-3xl p-8">
+          <div class="text-4xl mb-4">{{ .icon }}</div>
+          <h3 class="text-xl font-extrabold text-aqua-900 mb-2">{{ .title }}</h3>
+          <p class="text-aqua-700">{{ .description }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ About (contenido Markdown renderizado) ═══════ -->
+  <section id="about" class="relative z-10 py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-3xl p-10 md:p-14 relative overflow-hidden">
+        <div class="sphere absolute" style="width:120px;height:120px;top:-30px;right:-30px;opacity:0.5"></div>
+        <div class="prose-custom">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Download ═══════ -->
+  <section id="download" class="relative z-10 py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="glass-strong rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+        <div class="sphere sphere-green absolute anim-float" style="width:100px;height:100px;top:-20px;left:-20px;opacity:0.4"></div>
+        <div class="sphere absolute anim-float-d" style="width:80px;height:80px;bottom:-20px;right:-20px;opacity:0.4"></div>
+
+        <h2 class="text-4xl font-black text-aqua-900 mb-4">Get Coconut Dynamics</h2>
+        <p class="text-aqua-700 font-semibold mb-8">Download the latest ISO and bring your desktop to life.</p>
+
+        <a href="{{ .Params.download_url }}" class="btn-glossy inline-flex items-center gap-3 text-white font-bold text-xl px-10 py-5 rounded-full mb-8">
+          <span>⬇</span><span>Download ISO</span>
+        </a>
+
+        <!-- Metadata de la ISO -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+          <div class="glass-card rounded-2xl p-4">
+            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Version</div>
+            <div class="text-lg font-extrabold text-aqua-900">{{ .Params.iso_version }}</div>
+          </div>
+          <div class="glass-card rounded-2xl p-4">
+            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Architecture</div>
+            <div class="text-lg font-extrabold text-aqua-900">{{ .Params.iso_arch }}</div>
+          </div>
+          <div class="glass-card rounded-2xl p-4">
+            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Size</div>
+            <div class="text-lg font-extrabold text-aqua-900">{{ .Params.iso_size }}</div>
+          </div>
+          <div class="glass-card rounded-2xl p-4">
+            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Checksum</div>
+            <div class="text-sm font-mono font-bold text-aqua-900">{{ .Params.iso_checksum }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Footer ═══════ -->
+  <footer class="relative z-10 py-10 px-6">
+    <div class="max-w-6xl mx-auto glass rounded-3xl px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-lg font-extrabold text-aqua-800">
+          <span class="text-2xl">🥥</span>
+          <span>Coconut Dynamics</span>
+        </div>
+        <div class="flex gap-6 font-semibold text-aqua-700 text-sm">
+          <a href="#" class="hover:text-aqua-900 transition">Documentation</a>
+          <a href="#" class="hover:text-aqua-900 transition">Community</a>
+          <a href="#" class="hover:text-aqua-900 transition">Privacy</a>
+          <a href="#" class="hover:text-aqua-900 transition">GitHub</a>
+        </div>
+        <div class="text-sm text-aqua-600 font-semibold">
+          © 2026 Coconut Dynamics · GPL-3.0
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
