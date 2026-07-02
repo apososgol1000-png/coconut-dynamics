@@ -20,7 +20,7 @@ features:
     description: "Optimized kernel and parallelized services get you from power-on to desktop in under 20 seconds."
   - icon: "🪟"
     title: "Glassmorphic Desktop"
-    description: "KDE Plasma, our desktop environment, features translucent panels and a clean, modern aesthetic."
+    description: "MATE, our desktop environment, features translucent panels and a clean, modern aesthetic."
   - icon: "🔄"
     title: "Rolling Release"
     description: "Always up to date with the latest packages and security patches — no reinstalling ever."
