@@ -133,7 +133,7 @@
 
   <!-- ═══════ Download ═══════ -->
   <section id="download" class="relative z-10 py-20 px-6">
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-4xl mx-auto"> <!-- Ampliado para acomodar las 5 cajas -->
       <div class="glass-strong rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
         <div class="sphere sphere-green absolute anim-float" style="width:100px;height:100px;top:-20px;left:-20px;opacity:0.4"></div>
         <div class="sphere absolute anim-float-d" style="width:80px;height:80px;bottom:-20px;right:-20px;opacity:0.4"></div>
@@ -141,28 +141,38 @@
         <h2 class="text-4xl font-black text-aqua-900 mb-4">Get Coconut Dynamics</h2>
         <p class="text-aqua-700 font-semibold mb-8">Download the latest ISO and bring your desktop to life.</p>
 
-        <a href="{{ .Params.download_url }}" class="btn-glossy inline-flex items-center gap-3 text-white font-bold text-xl px-10 py-5 rounded-full mb-8">
+        <a href="{{ .Params.iso_download_url }}" class="btn-glossy inline-flex items-center gap-3 text-white font-bold text-xl px-10 py-5 rounded-full mb-8">
           <span>⬇</span><span>Download ISO</span>
         </a>
 
-        <!-- Metadata de la ISO -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-          <div class="glass-card rounded-2xl p-4">
+        <!-- Metadata de la ISO y Checksums -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-center items-center">
             <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Version</div>
             <div class="text-lg font-extrabold text-aqua-900">{{ .Params.iso_version }}</div>
           </div>
-          <div class="glass-card rounded-2xl p-4">
+          
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-center items-center">
             <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Architecture</div>
-            <div class="text-lg font-extrabold text-aqua-900">{{ .Params.iso_arch }}</div>
+            <div class="text-base font-extrabold text-aqua-900">{{ .Params.iso_arch }}</div>
           </div>
-          <div class="glass-card rounded-2xl p-4">
+          
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-center items-center">
             <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Size</div>
             <div class="text-lg font-extrabold text-aqua-900">{{ .Params.iso_size }}</div>
           </div>
-          <div class="glass-card rounded-2xl p-4">
-            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide">Checksum</div>
-            <div class="text-sm font-mono font-bold text-aqua-900">{{ .Params.iso_checksum }}</div>
-          </div>
+          
+          <!-- Botón de SHA-256 -->
+          <a href="{{ .Params.sha256_url }}" target="_blank" class="glass-card rounded-2xl p-4 flex flex-col justify-center items-center hover:scale-105 hover:bg-white/40 transition-all cursor-pointer">
+            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide mb-1">{{ .Params.sha256_title }}</div>
+            <div class="text-sm font-extrabold text-aqua-900 flex items-center gap-1"><span>⬇</span> File</div>
+          </a>
+          
+          <!-- Botón de MD5 -->
+          <a href="{{ .Params.md5_url }}" target="_blank" class="glass-card rounded-2xl p-4 flex flex-col justify-center items-center hover:scale-105 hover:bg-white/40 transition-all cursor-pointer">
+            <div class="text-xs font-bold text-aqua-600 uppercase tracking-wide mb-1">{{ .Params.md5_title }}</div>
+            <div class="text-sm font-extrabold text-aqua-900 flex items-center gap-1"><span>⬇</span> File</div>
+          </a>
         </div>
       </div>
     </div>
