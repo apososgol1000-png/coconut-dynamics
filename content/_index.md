@@ -10,8 +10,12 @@ hero_subtitle: "A refreshing, glassmorphic operating system that blends Frutiger
 iso_version: "1.0.6"
 iso_arch: "x86_64 · ARM64"
 iso_size: "4.3 GB"
-iso_checksum: "SHA-256"
-download_url: "https://repo.coconutdynamics.com/Cheksums/sha256sum.txt"
+iso_checksum_type: "SHA-256"
+# URL de la ISO (vacía por ahora)
+iso_download_url: "#"
+# URLs de los checksums
+sha256_url: "https://repo.coconutdynamics.com/Cheksums/sha256sum.txt"
+md5_url: "https://repo.coconutdynamics.com/Cheksums/md5sum.txt"
 
 # ── Features (6 tarjetas) ──
 features:
@@ -34,15 +38,3 @@ features:
     title: "Community Driven"
     description: "Built by a passionate community of developers and designers who sweat every detail."
 ---
-
-## Our Philosophy
-
-Coconut Dynamics was born from a simple idea: an operating system should feel **alive** — responsive, beautiful, and intuitive. We blend the nostalgic charm of Frutiger Aero aesthetics with modern Linux technology to create an experience that is both familiar and forward-thinking.
-
-Our philosophy centers on three pillars:
-
-- **Transparency** — open-source, open development, open communication. Everything we do is visible.
-- **Performance** — every line of code is measured, optimized, and profiled. Speed is a feature.
-- **Beauty** — software should bring joy. We obsess over typography, spacing, color, and motion.
-
-We believe that an operating system is not just a tool — it's the environment where you spend your digital life. It should be a place you *want* to be.
