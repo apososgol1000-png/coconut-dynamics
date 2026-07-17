@@ -11,7 +11,7 @@ iso_version: "1.0.6"
 iso_arch: "x86_64 · ARM64"
 iso_size: "4.3 GB"
 iso_checksum: "SHA-256"
-download_url: "#"
+download_url: "https://repo.coconutdynamics.com/Cheksums/sha256sum.txt"
 
 # ── Features (6 tarjetas) ──
 features:
