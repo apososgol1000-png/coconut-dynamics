@@ -12,7 +12,7 @@ iso_arch: "x86_64 · ARM64"
 iso_size: "4.3 GB"
 
 # Enlace de la ISO (vacío con "#" por ahora como pediste)
-iso_download_url: "#"
+iso_download_url: "https://repo.coconutdynamics.com/ISO%20images/Experimental%20ISOs/CoconutWAY-amd64.hybrid.iso"
 
 # ── Checksums (Separados en sus propias variables) ──
 sha256_title: "SHA-256"
