@@ -9,7 +9,7 @@ hero_subtitle: "A refreshing, glassmorphic operating system that blends Frutiger
 # ── Download metadata ──
 iso_version: "1.0.6"
 iso_arch: "x86_64 · ARM64"
-iso_size: "4.3 GB"
+iso_size: "3.4 GB"
 
 # Enlace de la ISO (vacío con "#" por ahora como pediste)
 iso_download_url: "https://repo.coconutdynamics.com/ISO%20images/Experimental%20ISOs/CoconutWAY-amd64.hybrid.iso"
